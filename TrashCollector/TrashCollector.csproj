@@ -185,6 +185,14 @@
     <Compile Include="Migrations\201910021546152_EmployeeAndCustomerModelsCreated.Designer.cs">
       <DependentUpon>201910021546152_EmployeeAndCustomerModelsCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910021642073_ImplementedApplicationUserForeignKeyForModels.cs" />
+    <Compile Include="Migrations\201910021642073_ImplementedApplicationUserForeignKeyForModels.Designer.cs">
+      <DependentUpon>201910021642073_ImplementedApplicationUserForeignKeyForModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910021906088_modelChangedIGuess.cs" />
+    <Compile Include="Migrations\201910021906088_modelChangedIGuess.Designer.cs">
+      <DependentUpon>201910021906088_modelChangedIGuess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -285,6 +293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910021546152_EmployeeAndCustomerModelsCreated.resx">
       <DependentUpon>201910021546152_EmployeeAndCustomerModelsCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910021642073_ImplementedApplicationUserForeignKeyForModels.resx">
+      <DependentUpon>201910021642073_ImplementedApplicationUserForeignKeyForModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910021906088_modelChangedIGuess.resx">
+      <DependentUpon>201910021906088_modelChangedIGuess.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
