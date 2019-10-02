@@ -168,6 +168,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -178,6 +180,10 @@
     <Compile Include="Migrations\201910011931271_init.cs" />
     <Compile Include="Migrations\201910011931271_init.Designer.cs">
       <DependentUpon>201910011931271_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910021546152_EmployeeAndCustomerModelsCreated.cs" />
+    <Compile Include="Migrations\201910021546152_EmployeeAndCustomerModelsCreated.Designer.cs">
+      <DependentUpon>201910021546152_EmployeeAndCustomerModelsCreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -246,6 +252,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,6 +282,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910011931271_init.resx">
       <DependentUpon>201910011931271_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910021546152_EmployeeAndCustomerModelsCreated.resx">
+      <DependentUpon>201910021546152_EmployeeAndCustomerModelsCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
