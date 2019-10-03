@@ -19,10 +19,10 @@ namespace TrashCollector.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            
+
 
             //context.Days.AddOrUpdate(
-            //    new Models.Day { Name = "Sunday"},
+            //    new Models.Day { Name = "Sunday" },
             //    new Models.Day { Name = "Monday" },
             //    new Models.Day { Name = "Tuesday" },
             //    new Models.Day { Name = "Wednesday" },

@@ -39,6 +39,14 @@ namespace TrashCollector.Controllers
             return View(customer);
         }
 
+        // GET: Customer/Balance
+        public ActionResult Balance(int? id)
+        {
+            Customer customer = db.Customers.Find(id);
+            customer.Days = db.Days.ToList();
+            return View(customer);
+        }
+
         // GET: Customers/Create
         public ActionResult Create()
         {
@@ -90,7 +98,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Address,City,State,ZipCode,Balance,DayId")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Address,City,State,ZipCode,Balance,DayId,ExtraPickUp,StartHoldDate,EndHoldDate")] Customer customer)
         {
 
             if (ModelState.IsValid)
