@@ -107,3 +107,10 @@ C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashC
 C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.csproj.GenerateResource.cache
 C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.DaysAddedToDb.resources
 C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.ForeignKeyUpdatedCustomer.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.DateTimeExtraPickUpAdded.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.jQueryUiDatePickerAdded.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.changedDataFormatString.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.dateTimeType.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.datetimeDisplayFormatAdded.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.changedtonotNullable.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.commentedOutDataTypeDate.resources

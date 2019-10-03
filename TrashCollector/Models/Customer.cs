@@ -33,6 +33,11 @@ namespace TrashCollector.Models
         [Display(Name = "Balance")]
         public int Balance { get; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Extra Pick Up")]
+        public DateTime ExtraPickUp { get; set; }
+
         [ForeignKey("Day")]
         [Display(Name = "Weekly Pick Up Day")]
         public int DayId { get; set; }
