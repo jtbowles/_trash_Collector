@@ -114,3 +114,4 @@ C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashC
 C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.datetimeDisplayFormatAdded.resources
 C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.changedtonotNullable.resources
 C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.commentedOutDataTypeDate.resources
+C:\Users\jbowl\Desktop\All Projects [dCC]\_trash_Collector\TrashCollector\TrashCollector\obj\Debug\TrashCollector.Migrations.StartAndEndDateAdded.resources

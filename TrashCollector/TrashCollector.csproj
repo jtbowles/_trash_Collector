@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201910031716005_commentedOutDataTypeDate.Designer.cs">
       <DependentUpon>201910031716005_commentedOutDataTypeDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910031924398_StartAndEndDateAdded.cs" />
+    <Compile Include="Migrations\201910031924398_StartAndEndDateAdded.Designer.cs">
+      <DependentUpon>201910031924398_StartAndEndDateAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -385,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910031716005_commentedOutDataTypeDate.resx">
       <DependentUpon>201910031716005_commentedOutDataTypeDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031924398_StartAndEndDateAdded.resx">
+      <DependentUpon>201910031924398_StartAndEndDateAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

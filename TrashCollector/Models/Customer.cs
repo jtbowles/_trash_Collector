@@ -33,17 +33,26 @@ namespace TrashCollector.Models
         [Display(Name = "Balance")]
         public int Balance { get; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Extra Pick Up")]
-        public DateTime ExtraPickUp { get; set; }
-
         [ForeignKey("Day")]
         [Display(Name = "Weekly Pick Up Day")]
         public int DayId { get; set; }
         public Day Day { get; set; }
         public IEnumerable<Day> Days { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Extra Pick Up Date")]
+        public DateTime ExtraPickUp { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Start Hold")]
+        public DateTime StartHoldDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "End Hold")]
+        public DateTime EndHoldDate { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
