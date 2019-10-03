@@ -16,11 +16,12 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            Employee employee = db.Employees.Find(id);
+            var listOfCustomers = db.Customers.Where(c => c.ZipCode == employee.ZipCode).ToList();
 
-
-            return View(db.Employees.ToList());
+            return View(listOfCustomers);
         }
 
         // GET: Employees/Details/5
@@ -57,7 +58,7 @@ namespace TrashCollector.Controllers
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = employee.EmployeeId});
             }
 
             return View(employee);
@@ -89,7 +90,7 @@ namespace TrashCollector.Controllers
             {
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = employee.EmployeeId });
             }
             return View(employee);
         }
@@ -117,7 +118,7 @@ namespace TrashCollector.Controllers
             Employee employee = db.Employees.Find(id);
             db.Employees.Remove(employee);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = employee.EmployeeId });
         }
 
         protected override void Dispose(bool disposing)

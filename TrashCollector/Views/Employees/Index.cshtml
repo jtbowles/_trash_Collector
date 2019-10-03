@@ -1,14 +1,11 @@
-﻿@model IEnumerable<TrashCollector.Models.Employee>
+﻿@model IEnumerable<TrashCollector.Models.Customer>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Deliveries In Your Area</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -34,11 +31,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId }) |
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId },) |
             @Html.ActionLink("Details", "Details", new { id=item.EmployeeId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId })
-        </td>
+        </td>*@
     </tr>
 }
 
