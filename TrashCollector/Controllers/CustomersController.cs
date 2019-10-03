@@ -18,7 +18,9 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            var customers = db.Customers.Include(m => m.Day).ToList();
+
+            return View(customers);
         }
 
         // GET: Customers/Details/5
@@ -29,6 +31,7 @@ namespace TrashCollector.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Customer customer = db.Customers.Find(id);
+            customer.Days = db.Days.ToList();
             if (customer == null)
             {
                 return HttpNotFound();
@@ -39,7 +42,12 @@ namespace TrashCollector.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            return View();
+            var days = db.Days.ToList();
+            Customer customer = new Customer()
+            {
+                Days = days
+            };
+            return View(customer);
         }
 
         // POST: Customers/Create
@@ -47,8 +55,9 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Address,City,State,ZipCode,Balance")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Address,City,State,ZipCode,Balance,DayId")] Customer customer)
         {
+            //customer.DayId = 
             customer.ApplicationId = User.Identity.GetUserId();
 
             if (ModelState.IsValid)
@@ -69,6 +78,7 @@ namespace TrashCollector.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Customer customer = db.Customers.Find(id);
+            customer.Days = db.Days.ToList();
             if (customer == null)
             {
                 return HttpNotFound();
@@ -81,8 +91,9 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Address,City,State,ZipCode,Balance")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Address,City,State,ZipCode,Balance,DayId")] Customer customer)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;

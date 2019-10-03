@@ -181,6 +181,14 @@
     <Compile Include="Migrations\201910022157008_init.Designer.cs">
       <DependentUpon>201910022157008_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910031228534_DaysAddedToDb.cs" />
+    <Compile Include="Migrations\201910031228534_DaysAddedToDb.Designer.cs">
+      <DependentUpon>201910031228534_DaysAddedToDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910031311288_ForeignKeyUpdatedCustomer.cs" />
+    <Compile Include="Migrations\201910031311288_ForeignKeyUpdatedCustomer.Designer.cs">
+      <DependentUpon>201910031311288_ForeignKeyUpdatedCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -279,6 +287,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910022157008_init.resx">
       <DependentUpon>201910022157008_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031228534_DaysAddedToDb.resx">
+      <DependentUpon>201910031228534_DaysAddedToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031311288_ForeignKeyUpdatedCustomer.resx">
+      <DependentUpon>201910031311288_ForeignKeyUpdatedCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
