@@ -21,6 +21,9 @@ namespace TrashCollector.Controllers
             Employee employee = db.Employees.Find(id);
             var listOfCustomers = db.Customers.Where(c => c.ZipCode == employee.ZipCode).ToList();
 
+            // implement logic to include the DateTime.Date/Day
+            // compare the customer.PickUpDay && customer.ExtraPickUpDate
+
             return View(listOfCustomers);
         }
 

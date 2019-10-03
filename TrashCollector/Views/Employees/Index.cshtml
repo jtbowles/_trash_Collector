@@ -35,6 +35,10 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId },) |
             @Html.ActionLink("Details", "Details", new { id=item.EmployeeId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId })
+            
+            Add an Html.ActionLink to CustomerDetails
+            @Html.ActionLink("Details", "Details", "Customers", new { id=item.CustomerId})
+
         </td>*@
     </tr>
 }
