@@ -4,7 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Deliveries In Your Area</h2>
+<h2>Pickups In Your Area</h2>
+
+@using (Html.BeginForm("Sort", "Employees"))
+{
+    <div class="form-group">
+        @Html.Label("Day of Week", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("Days", (SelectList)ViewBag.Name, " ")
+            @*@Html.DropDownListFor("Days", (SelectList)ViewBag.Name as IEnumerable<SelectListItem>), ""))*@
+            <input type="submit" class="btn btn-default" value="Sort" />
+        </div>
+    </div>
+}
 
 <table class="table">
     <tr>
@@ -20,27 +32,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZipCode)
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId },) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId })
-            
-            Add an Html.ActionLink to CustomerDetails
-            @Html.ActionLink("Details", "Details", "Customers", new { id=item.CustomerId})
-
-        </td>*@
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Customers", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
 
 </table>

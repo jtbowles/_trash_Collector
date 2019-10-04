@@ -24,6 +24,9 @@ namespace TrashCollector.Controllers
             var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == employee.ZipCode);
             List<Customer> listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == currentDay.ToString()).ToList();
 
+            // CHECK SUSPENSIONS!!
+
+            ViewBag.Name = new SelectList(db.Days.ToList(), "Id", "Name");
             return View(listOfCustomersByPickUp);
         }
 
@@ -124,6 +127,23 @@ namespace TrashCollector.Controllers
             return RedirectToAction("Index", new { id = employee.EmployeeId });
         }
 
+        // SORT BY DAY
+        public ActionResult Sort(Day Days)
+        {
+            var employeeId = User.Identity.GetUserId();
+            Employee currentEmployee = db.Employees.Where(e => e.ApplicationId == employeeId).FirstOrDefault();
+
+            var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == currentEmployee.ZipCode);
+            List<Customer> listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.ExtraPickUp.ToString() == Days.Name|| c.Day.Name == Days.Name).ToList();
+
+            // INCLUDE START AND END SUSPENSION
+
+            //var day = Days.Id;
+            //var sortedListOfCustomers = db.Customers.Where(c => c.DayId == day);
+
+            return View("Index", listOfCustomersByPickUp);
+        }
+               
         protected override void Dispose(bool disposing)
         {
             if (disposing)
