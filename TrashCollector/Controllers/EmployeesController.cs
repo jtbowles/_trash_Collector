@@ -19,11 +19,12 @@ namespace TrashCollector.Controllers
         public ActionResult Index(int? id)
         {
             DayOfWeek currentDay = DateTime.Today.DayOfWeek;
-
             Employee employee = db.Employees.Find(id);
-            var listOfCustomers = db.Customers.Where(c => c.ZipCode == employee.ZipCode && c.ExtraPickUp == DateTime.Today && c.Day.Name == currentDay.ToString()).ToList();
 
-            return View(listOfCustomers);
+            var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == employee.ZipCode);
+            List<Customer> listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == currentDay.ToString()).ToList();
+
+            return View(listOfCustomersByPickUp);
         }
 
         // GET: Employees/Details/5
