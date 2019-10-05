@@ -6,17 +6,28 @@
 
 <h2>Pickups In Your Area</h2>
 
-@using (Html.BeginForm("Sort", "Employees"))
+@*@using (Html.BeginForm("Sort", "Employees"))
 {
     <div class="form-group">
         @Html.Label("Day of Week", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.DropDownList("Days", (SelectList)ViewBag.Name, " ")
-            @*@Html.DropDownListFor("Days", (SelectList)ViewBag.Name as IEnumerable<SelectListItem>), ""))*@
+            @Html.DropDownListFor("Days", (SelectList)ViewBag.Name as IEnumerable<SelectListItem>), ""))
             <input type="submit" class="btn btn-default" value="Sort" />
         </div>
     </div>
-}
+}*@
+
+<p>
+    @Html.ActionLink("Monday", "Monday") |
+    @Html.ActionLink("Tuesday", "Tuesday", new { id = DayOfWeek.Tuesday }) |
+    @Html.ActionLink("Wednesday", "Wednesday", new { id = DayOfWeek.Wednesday }) |
+    @Html.ActionLink("Thursday", "Thursday", new { id = DayOfWeek.Thursday }) |
+    @Html.ActionLink("Friday", "Friday", new { id = DayOfWeek.Friday }) |
+    @Html.ActionLink("Saturday", "Saturday", new { id = DayOfWeek.Saturday }) |
+    @Html.ActionLink("Sunday", "Sunday", new { id = DayOfWeek.Sunday }) |
+</p>
+
 
 <table class="table">
     <tr>
