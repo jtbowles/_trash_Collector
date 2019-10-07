@@ -27,7 +27,7 @@ namespace TrashCollector.Controllers
 
             // CHECK SUSPENSIONS!!
 
-            ViewBag.Name = new SelectList(db.Days.ToList(), "Id", "Name");
+            //ViewBag.Name = new SelectList(db.Days.ToList(), "Id", "Name");
             return View(listOfCustomersByPickUp);
         }
 
@@ -68,11 +68,12 @@ namespace TrashCollector.Controllers
 
                 default:
                     break;
-            }   
-            Employee currentEmployee = db.Employees.Find(3);
+            }
+            var applicationId = User.Identity.GetUserId();
+            Employee currentEmployee = db.Employees.Where(e => e.ApplicationId == applicationId).FirstOrDefault();
 
             var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == currentEmployee.ZipCode);
-            var listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.Day.Name == day.ToString());
+            List<Customer> listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.Day.Name == day.ToString()).ToList();
 
             return View("Index", listOfCustomersByPickUp);
         }
@@ -174,7 +175,29 @@ namespace TrashCollector.Controllers
             return RedirectToAction("Index", new { id = employee.EmployeeId });
         }
 
-               
+        // GET: CUSTOMER/DETAILS
+        public ActionResult CustomerDetails(int? id)
+        {
+            Customer customer = db.Customers.Find(id);
+            customer.Days = db.Days.ToList();
+            return View(customer);
+        }
+
+        // CONFIRM Customer PickUp
+        public ActionResult ConfirmPickup(int? id)
+        {
+            Customer customer = db.Customers.Find(id);
+            customer.Balance += 15;
+            var applicationId = User.Identity.GetUserId();
+            Employee currentEmployee = db.Employees.Where(e => e.ApplicationId == applicationId).FirstOrDefault();
+            DayOfWeek currentDay = DateTime.Today.DayOfWeek;
+
+            var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == currentEmployee.ZipCode);
+            var listOfUnconfirmedCustomers = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == currentDay.ToString());
+
+            return View("Index", listOfUnconfirmedCustomers);
+        }
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

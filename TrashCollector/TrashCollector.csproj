@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201910031924398_StartAndEndDateAdded.Designer.cs">
       <DependentUpon>201910031924398_StartAndEndDateAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910071358091_nullablePropsInCustomersModel.cs" />
+    <Compile Include="Migrations\201910071358091_nullablePropsInCustomersModel.Designer.cs">
+      <DependentUpon>201910071358091_nullablePropsInCustomersModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -343,6 +347,7 @@
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Balance.cshtml" />
+    <Content Include="Views\Employees\CustomerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -393,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910031924398_StartAndEndDateAdded.resx">
       <DependentUpon>201910031924398_StartAndEndDateAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910071358091_nullablePropsInCustomersModel.resx">
+      <DependentUpon>201910071358091_nullablePropsInCustomersModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

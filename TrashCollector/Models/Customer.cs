@@ -31,7 +31,7 @@ namespace TrashCollector.Models
         public int ZipCode { get; set; }
 
         [Display(Name = "Balance")]
-        public int Balance { get; }
+        public int Balance { get; set; }
 
         [ForeignKey("Day")]
         [Display(Name = "Weekly Pick Up Day")]
@@ -42,17 +42,17 @@ namespace TrashCollector.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Extra Pick Up Date")]
-        public DateTime ExtraPickUp { get; set; }
+        public DateTime? ExtraPickUp { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Start Hold")]
-        public DateTime StartHoldDate { get; set; }
+        public DateTime? StartHoldDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "End Hold")]
-        public DateTime EndHoldDate { get; set; }
+        public DateTime? EndHoldDate { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }

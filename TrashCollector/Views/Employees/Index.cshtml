@@ -6,18 +6,6 @@
 
 <h2>Pickups In Your Area</h2>
 
-@*@using (Html.BeginForm("Sort", "Employees"))
-{
-    <div class="form-group">
-        @Html.Label("Day of Week", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownList("Days", (SelectList)ViewBag.Name, " ")
-            @Html.DropDownListFor("Days", (SelectList)ViewBag.Name as IEnumerable<SelectListItem>), ""))
-            <input type="submit" class="btn btn-default" value="Sort" />
-        </div>
-    </div>
-}*@
-
 <p>
     @Html.ActionLink("Monday", "Sort", new { id = 1}) |
     @Html.ActionLink("Tuesday", "Sort", new { id = 2}) |
@@ -56,7 +44,7 @@
                 @Html.DisplayFor(modelItem => item.ZipCode)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Customers", new { id = item.Id }, null)
+                @Html.ActionLink("Details", "CustomerDetails", new { id = item.Id }, null)
             </td>
         </tr>
     }
