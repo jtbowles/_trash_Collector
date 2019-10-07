@@ -22,7 +22,8 @@ namespace TrashCollector.Controllers
             Employee employee = db.Employees.Find(id);
 
             var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == employee.ZipCode);
-            List<Customer> listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == currentDay.ToString()).ToList();
+            var listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == currentDay.ToString());
+            //var listOfCustomersWithoutSuspension = listOfCustomersByPickUp.Where(c => c.)
 
             // CHECK SUSPENSIONS!!
 
@@ -31,24 +32,50 @@ namespace TrashCollector.Controllers
         }
 
         // SORT BY DAY
-        public ActionResult Monday()
+        public ActionResult Sort(int? id)
         {
             DayOfWeek day = DayOfWeek.Monday;
 
-            //var employeeId = User.Identity.GetUserId();
+            switch (id)
+            {
+                case 1:
+                    day = DayOfWeek.Monday;
+                    break;
+
+                case 2:
+                    day = DayOfWeek.Tuesday;
+                    break;
+
+                case 3:
+                    day = DayOfWeek.Wednesday;
+                    break;
+
+                case 4:
+                    day = DayOfWeek.Thursday;
+                    break;
+
+                case 5:
+                    day = DayOfWeek.Friday;
+                    break;
+
+                case 6:
+                    day = DayOfWeek.Saturday;
+                    break;
+
+                case 7:
+                    day = DayOfWeek.Sunday;
+                    break;
+
+                default:
+                    break;
+            }   
             Employee currentEmployee = db.Employees.Find(3);
 
             var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == currentEmployee.ZipCode);
-            List<Customer> listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == day.ToString()).ToList();
-
-            // INCLUDE START AND END SUSPENSION
-
-            //var day = Days.Id;
-            //var sortedListOfCustomers = db.Customers.Where(c => c.DayId == day);
+            var listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.Day.Name == day.ToString());
 
             return View("Index", listOfCustomersByPickUp);
         }
-
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
