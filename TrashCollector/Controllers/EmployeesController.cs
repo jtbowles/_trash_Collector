@@ -45,7 +45,6 @@ namespace TrashCollector.Controllers
                     continue;
                 }
             }
-
             return View(filteredCustomers);
         }
 

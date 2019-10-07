@@ -177,6 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="Migrations\201910022157008_init.cs" />
     <Compile Include="Migrations\201910022157008_init.Designer.cs">
       <DependentUpon>201910022157008_init.cs</DependentUpon>
