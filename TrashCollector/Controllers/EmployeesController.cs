@@ -16,19 +16,37 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
             DayOfWeek currentDay = DateTime.Today.DayOfWeek;
-            Employee employee = db.Employees.Find(id);
+            DateTime currentDate = DateTime.Today;
+            var applicationId = User.Identity.GetUserId();
+            Employee employee = db.Employees.Where(e => e.ApplicationId == applicationId).FirstOrDefault();
 
             var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == employee.ZipCode);
             var listOfCustomersByPickUp = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == currentDay.ToString());
-            //var listOfCustomersWithoutSuspension = listOfCustomersByPickUp.Where(c => c.)
+            var listOfUnconfirmedCustomers = listOfCustomersByPickUp.Where(c => c.Balance == 0).ToList();
+            List<Customer> filteredCustomers = new List<Customer>();
 
-            // CHECK SUSPENSIONS!!
+            foreach (Customer customer in listOfUnconfirmedCustomers)
+            {
+                if(customer.StartHoldDate == null && customer.EndHoldDate == null)
+                {
+                    filteredCustomers.Add(customer);
+                    continue;
+                }
+                else if (currentDate.CompareTo(customer.StartHoldDate) <= 0 && currentDate.CompareTo(customer.EndHoldDate) >= 0)
+                {
+                    filteredCustomers.Add(customer);
+                    continue;
+                }
+                else if (currentDate.CompareTo(customer.StartHoldDate) > 0 && currentDate.CompareTo(customer.EndHoldDate) < 0)
+                {
+                    continue;
+                }
+            }
 
-            //ViewBag.Name = new SelectList(db.Days.ToList(), "Id", "Name");
-            return View(listOfCustomersByPickUp);
+            return View(filteredCustomers);
         }
 
         // SORT BY DAY
@@ -188,16 +206,10 @@ namespace TrashCollector.Controllers
         {
             Customer customer = db.Customers.Find(id);
             customer.Balance += 15;
-            var applicationId = User.Identity.GetUserId();
-            Employee currentEmployee = db.Employees.Where(e => e.ApplicationId == applicationId).FirstOrDefault();
-            DayOfWeek currentDay = DateTime.Today.DayOfWeek;
-
-            var listOfCustomersByZip = db.Customers.Where(c => c.ZipCode == currentEmployee.ZipCode);
-            var listOfUnconfirmedCustomers = listOfCustomersByZip.Where(c => c.ExtraPickUp == DateTime.Today || c.Day.Name == currentDay.ToString());
-
-            return View("Index", listOfUnconfirmedCustomers);
+            db.SaveChanges();
+            return View(customer);
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

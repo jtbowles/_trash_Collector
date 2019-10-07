@@ -1,0 +1,17 @@
+﻿@model TrashCollector.Models.Customer
+
+@{
+    ViewBag.Title = "Pickup Confirmation";
+}
+
+<h2>Trash Collection Confirmed</h2>
+
+<div>
+    <p>Pickup has been confirmed for @Model.FirstName @Model.LastName</p>
+    <p>Customer's current balance: @Model.Balance</p>
+</div>
+
+<p>
+    @Html.ActionLink("Back To List", "Index")
+</p>
+

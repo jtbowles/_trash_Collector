@@ -4,28 +4,16 @@
     ViewBag.Title = "Customer Details";
 }
 
-<h2>Details</h2>
+<h2>Customer Details</h2>
 
 <div>
-    <h4>Customer</h4>
+    <h4>@Model.FirstName @Model.LastName</h4>
+    <p>
+        @Html.ActionLink("Confirm Pickup", "ConfirmPickup", new { id = Model.Id }) |
+        @Html.ActionLink("Back To List", "Index")
+    </p>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
@@ -65,10 +53,28 @@
         <dd>
             @Html.DisplayFor(model => model.Day.Name)
         </dd>
-
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Confirm Pickup", "ConfirmPickup", new { id = Model.Id })
-</p>
+
+<style>
+    #map {
+        height: 400px;
+        width: 400px;
+    }
+</style>
+<br />
+<div class="row">
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_ThkjsYMX4gBc0xMnfkzVDsasuxkq79I&callback=initMap"
+            async defer></script>
+</div>
+
