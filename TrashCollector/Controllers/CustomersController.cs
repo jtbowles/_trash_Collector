@@ -71,7 +71,7 @@ namespace TrashCollector.Controllers
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = customer.Id});
             }
 
             return View(customer);
@@ -105,7 +105,7 @@ namespace TrashCollector.Controllers
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = customer.Id });
             }
             return View(customer);
         }

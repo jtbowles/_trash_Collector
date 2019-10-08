@@ -58,5 +58,11 @@ namespace TrashCollector.Models
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
+        [NotMapped]
+        public double Lat { get; set; }
+
+        [NotMapped]
+        public double Lng { get; set; }
+
     }
 }

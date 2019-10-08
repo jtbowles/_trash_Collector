@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -197,6 +199,19 @@ namespace TrashCollector.Controllers
         {
             Customer customer = db.Customers.Find(id);
             customer.Days = db.Days.ToList();
+
+            var address = customer.Address + "," + customer.City + "," + customer.State;
+            var Key = Keys.GoogleApiKey;
+            var requestUrl = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={Key}";
+            var result = new WebClient().DownloadString(requestUrl);
+            var jo = JObject.Parse(result);
+
+            var lat = jo["results"][0]["geometry"]["location"]["lat"];
+            var lng = jo["results"][0]["geometry"]["location"]["lng"];
+
+            customer.Lat = Convert.ToDouble(lat);
+            customer.Lng = Convert.ToDouble(lng);
+
             return View(customer);
         }
 
@@ -208,6 +223,14 @@ namespace TrashCollector.Controllers
             db.SaveChanges();
             return View(customer);
         }
+
+        //public GeoCode GeoLocate(string address)
+        //{
+        //    var requestUrl = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key=AIzaSyCvNx58z28nAtRCUDGJU6xi2qisdrmE1dQ";
+        //    var result = new WebClient().DownloadString(requestUrl);
+        //    GeoCode geocode = JsonConvert.DeserializeObject<GeoCode>(result);
+        //    return geocode;
+        //}
 
         protected override void Dispose(bool disposing)
         {
