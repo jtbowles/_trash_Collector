@@ -66,11 +66,34 @@
             @Html.DisplayFor(model => model.Day.Name)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraPickUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraPickUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartHoldDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartHoldDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndHoldDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndHoldDate)
+        </dd>
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Back", "Details", new { id = Model.Id}) |
     @Html.ActionLink("View Balance", "Balance", new { id = Model.Id})
 </p>
